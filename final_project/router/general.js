@@ -40,21 +40,20 @@ public_users.post("/register", (req,res) => {
 // Get the book list available in the shop using async await
 public_users.get('/', (req, res) => {
     const getBooks = () => {
-        return new Promise((resolve,reject) => {
-          setTimeout(() => {
-            resolve(books);
-            ),1000);
-        })
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(books);
+            }, 1000);  // Corrected placement of closing parentheses
+        });
     }
+    
     getBooks().then((books) => {
         res.json(books);
-    }).catch((err) =>{
-      res.status(500).json({error: "An error occured"});
+    }).catch((err) => {
+        res.status(500).json({ error: "An error occurred" });
     });
-      
-    //await res.send(JSON.stringify(books,null,4));
-  
 });
+
 
 
 // // Get book details based on ISBN
